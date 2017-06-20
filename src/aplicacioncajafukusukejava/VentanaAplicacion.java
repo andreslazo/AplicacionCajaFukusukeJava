@@ -16,6 +16,7 @@ public class VentanaAplicacion extends javax.swing.JFrame {
      */
     public VentanaAplicacion() {
         initComponents();
+        //Aqui va la cola
     }
 
     /**
@@ -44,7 +45,6 @@ public class VentanaAplicacion extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtIdCliente = new javax.swing.JTextField();
         txtSucursal = new javax.swing.JTextField();
-        txtComenzar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,13 +89,6 @@ public class VentanaAplicacion extends javax.swing.JFrame {
 
         txtSucursal.setEditable(false);
 
-        txtComenzar.setText("Comenzar");
-        txtComenzar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtComenzarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,17 +131,14 @@ public class VentanaAplicacion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel6)
-                            .addComponent(txtComenzar))
+                            .addComponent(jLabel6))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(txtComenzar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -187,10 +177,6 @@ public class VentanaAplicacion extends javax.swing.JFrame {
     private void btnAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAprobarActionPerformed
-
-    private void txtComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComenzarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtComenzarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,7 +225,6 @@ public class VentanaAplicacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtComentarios;
-    private javax.swing.JButton txtComenzar;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtIdCliente;

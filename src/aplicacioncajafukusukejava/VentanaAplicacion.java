@@ -5,6 +5,11 @@
  */
 package aplicacioncajafukusukejava;
 
+import Consumidor.ConsumidorColaPedido;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.jms.JMSException;
+
 /**
  *
  * @author amlazo
@@ -14,9 +19,13 @@ public class VentanaAplicacion extends javax.swing.JFrame {
     /**
      * Creates new form VentanaAplicacion
      */
-    public VentanaAplicacion() {
+    public VentanaAplicacion() throws JMSException {
         initComponents();
         //Aqui va la cola
+        Consumidor.ConsumidorColaPedido consumidor=new ConsumidorColaPedido();
+        txtUser.setText(consumidor.consumirMensaje("queue.PedidoUsuario"));
+        
+        //Falta recibir los datos y ponerlos en su respectivo textfield
     }
 
     /**
@@ -45,6 +54,7 @@ public class VentanaAplicacion extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtIdCliente = new javax.swing.JTextField();
         txtSucursal = new javax.swing.JTextField();
+        txtUser = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +99,8 @@ public class VentanaAplicacion extends javax.swing.JFrame {
 
         txtSucursal.setEditable(false);
 
+        txtUser.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,14 +143,17 @@ public class VentanaAplicacion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addContainerGap()
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -208,7 +223,11 @@ public class VentanaAplicacion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaAplicacion().setVisible(true);
+                try {
+                    new VentanaAplicacion().setVisible(true);
+                } catch (JMSException ex) {
+                    Logger.getLogger(VentanaAplicacion.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -231,5 +250,6 @@ public class VentanaAplicacion extends javax.swing.JFrame {
     private javax.swing.JTextField txtNumeroBoleta;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtSucursal;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
